@@ -1,0 +1,135 @@
+@font-face {
+    font-family: 'Rany';
+    src: local('Rany'), 
+         url('../assets/fonts/rany/rany.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.header {
+    margin: 10px 0;
+    text-align: center;
+    height: 45px;
+    font-family: 'Rany';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: #805f22;
+    
+}
+
+.input {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.keyboard {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 75%);
+    width: auto;
+    height: auto;
+    /*outline: 1px solid #ff11df;*/
+    border-radius: 10px;
+    background-color:#eeeeee;
+}
+
+.keyboard__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*outline: 1px solid #ff11df;*/
+    margin: 10px 5px;
+}
+
+.keyboard__row_key {
+    line-height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 5px;
+    width: 50px;
+    height: 50px;
+    /*outline: 1px solid #ff11df;*/
+    border-radius: 5px;
+    background-color: #d3d3d3;
+    font-family: 'Rany';
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color:rgb(39, 39, 39);
+}
+
+.active {
+    background-color:rgb(136, 144, 255);
+}
+
+.keyboard__row_key:link, .keyboard__row_key:visited {
+    text-decoration: none;
+}
+
+.keyboard__row_key:hover {
+    cursor: pointer;
+    background-color:rgb(166, 172, 253);
+}
+
+.keyboard__row_key:active {
+    cursor: pointer;
+    background-color:rgb(136, 144, 255);
+}
+
+.keyboard__row_bks {
+    background-color: #a3a3a3;
+    width: 130px;
+}
+
+.keyboard__row_tab {
+    background-color: #a3a3a3;
+    width: 70px;
+}
+
+.keyboard__row_del {
+    background-color: #a3a3a3;
+    width: 60px;
+}
+
+.keyboard__row_capslock {
+    background-color: #a3a3a3;
+    width: 130px;
+}
+
+.keyboard__row_enter {
+    background-color: #a3a3a3;
+    width: 110px;
+}
+
+.keyboard__row_shift-l {
+    background-color: #a3a3a3;
+    width: 130px;
+}
+
+.keyboard__row_shift-r {
+    background-color: #a3a3a3;
+    width: 110px;
+}
+
+.keyboard__row_ctrl, .keyboard__row_win, .keyboard__row_alt {
+    background-color: #a3a3a3;
+}
+
+.keyboard__row_space {
+    width: 436px;
+}
+
+.description {
+    margin-top: 575px;
+    text-align: center;
+    font-family: 'Rany';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+}
