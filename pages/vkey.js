@@ -26,12 +26,10 @@ function keyBoard() {
     createElm('textArea', 'textarea', 'textarea');
     createElm('keyBoard', 'div', 'keyboard');
 
-    let keyboardItem = document.querySelector(".keyboard");
-
     for (let i = 0; i < 5; i++) {
         let keyboardItem = document.querySelector(".keyboard");
         let keyboardRow = document.createElement('div');
-        
+
         keyboardRow.className = "keyboard__row";
         keyboardItem.prepend(keyboardRow);
 
@@ -50,7 +48,7 @@ function keyBoard() {
         switch (i) {
             case 0:
                 addRowKeys(arrKeysRow5);
-            break;
+                break;
 
             case 1:
                 for (let j = 0; j < arrEnKeysRow4.length; j++) {
@@ -59,27 +57,27 @@ function keyBoard() {
                     keyCreateElm.classList.add(`${'Key' + arrEnKeysRow4[j].toUpperCase()}`);
                     keyCreateElm.innerHTML = arrEnKeysRow4[j];
                     keyRow.append(keyCreateElm);
-                    
-                    if (j == 0) { 
-                        keyCreateElm.classList.add('KeySHIFT_L'); 
+
+                    if (j == 0) {
+                        keyCreateElm.classList.add('KeySHIFT_L');
                     }
-                    if (j == 12) { 
-                        keyCreateElm.classList.add('KeySHIFT_R'); 
+                    if (j == 12) {
+                        keyCreateElm.classList.add('KeySHIFT_R');
                     }
                 }
                 break;
-                
+
             case 2:
                 addRowKeys(arrEnKeysRow3);
-                break;    
+                break;
 
             case 3:
                 addRowKeys(arrEnKeysRow2);
                 break;
-                
+
             case 4:
                 addRowKeys(arrEnKeysRow1);
-                break;     
+                break;
         }
 
     }
@@ -88,20 +86,59 @@ function keyBoard() {
         let textArea = document.querySelector('.textarea');
         let keyBtn = document.querySelectorAll('.keyboard__row_key');
 
-        for(let k of keyBtn) {
-            if (!k.classList.contains('KeyBACKSPACE') && !k.classList.contains('KeyTAB') && !k.classList.contains('KeyDEL') && !k.classList.contains('KeyCAPSLOCK') && + 
-            !k.classList.contains('KeyENTER') && !k.classList.contains('KeySHIFT') && !k.classList.contains('KeyCTRL') && !k.classList.contains('KeyWIN') && !k.classList.contains('KeyALT') && +
-            !k.classList.contains('Keyᐃ') && !k.classList.contains('Keyᐊ') && !k.classList.contains('Keyᐁ') && !k.classList.contains('Keyᐅ')) {
+        for (let k of keyBtn) {
+            if (!k.classList.contains('KeyBACKSPACE') && !k.classList.contains('KeyTAB') && !k.classList.contains('KeyDEL') && !k.classList.contains('KeyCAPSLOCK') && +
+                !k.classList.contains('KeyENTER') && !k.classList.contains('KeySHIFT') && !k.classList.contains('KeyCTRL') && !k.classList.contains('KeyWIN') && !k.classList.contains('KeyALT') && +
+                !k.classList.contains('Keyᐃ') && !k.classList.contains('Keyᐊ') && !k.classList.contains('Keyᐁ') && !k.classList.contains('Keyᐅ')) {
                 k.onclick = () => {
                     textArea.textContent += k.textContent;
-                    if (k.classList.contains('Key')) {textArea.textContent += ' ';}
+                    if (k.classList.contains('Key')) { textArea.textContent += ' '; }
                 }
             }
         }
     }
 
     print();
+
+   /* function KBPress() {
+
+        let keyPh = document.querySelectorAll('.keyboard__row_key');
+        let textArea = document.querySelector('.textarea');
+        let arrKeys = Array.from(keyPh);
+
+        document.addEventListener('keydown', (event) => {
+            event.preventDefault();
+            const key = arrKeys.find(it =>
+                it.classList.contains(event.code))
+            key.classList.add('active');
+            textArea.textContent += key.textContent;
+            console.log(key.textContent);
+        });*/
+
+        /*document.addEventListener('keyup', (event) => {
+            arrKeys.find(it => {
+                if (it.classList.contains(event.code) == true) {;
+                    it.classList.remove('active');
+                };
+            })
+        });*/
+   // }
+
+    //KBPress();
+
     createElm('description', 'div', 'description', "Клавиатура создана в операционной системе Windows </br> Для переключения языка комбинация: левые shift + alt");
 };
 
 keyBoard();
+
+
+
+
+/*document.addEventListener('keydown', (event) => {
+    const key = arrKeys.find(it => {
+        if (it.classList.contains(event.code) == true) {
+            it.classList.add('active');
+            textArea.textContent += 
+        };
+    })
+});*/
