@@ -1,8 +1,7 @@
 function keyBoard() {
 
-    let textArea = document.querySelector('.textarea');
     let arrEnKeysRow1 = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'BackSpace'];
-    let arrEnKeysRow2 = ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', "/", 'Del'];
+    let arrEnKeysRow2 = ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', "\\", 'Del'];
     let arrEnKeysRow3 = ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter'];
     let arrEnKeysRow4 = ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ᐃ', 'Shift'];
     let arrKeysRow5 = ['Ctrl', 'Win', 'Alt', ``, 'Alt', 'ᐊ', 'ᐁ', 'ᐅ', 'Ctrl'];
@@ -90,8 +89,13 @@ function keyBoard() {
         let keyBtn = document.querySelectorAll('.keyboard__row_key');
 
         for(let k of keyBtn) {
-            k.onclick = function() {
-                textArea.textContent += k.textContent;
+            if (!k.classList.contains('KeyBACKSPACE') && !k.classList.contains('KeyTAB') && !k.classList.contains('KeyDEL') && !k.classList.contains('KeyCAPSLOCK') && + 
+            !k.classList.contains('KeyENTER') && !k.classList.contains('KeySHIFT') && !k.classList.contains('KeyCTRL') && !k.classList.contains('KeyWIN') && !k.classList.contains('KeyALT') && +
+            !k.classList.contains('Keyᐃ') && !k.classList.contains('Keyᐊ') && !k.classList.contains('Keyᐁ') && !k.classList.contains('Keyᐅ')) {
+                k.onclick = () => {
+                    textArea.textContent += k.textContent;
+                    if (k.classList.contains('Key')) {textArea.textContent += ' ';}
+                }
             }
         }
     }
