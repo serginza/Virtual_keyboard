@@ -66,6 +66,7 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     color:rgb(39, 39, 39);
+    box-shadow: -2px -2px 3px -2px rgba(0, 0, 0, 1) inset;
 }
 
 .keyboard__row_key:link, .keyboard__row_key:visited {
@@ -80,48 +81,49 @@
 .keyboard__row_key:active {
     cursor: pointer;
     background-color:rgb(136, 144, 255);
+    box-shadow: -1px -2px 3px -1px rgba(0, 0, 0, 1);
 }
 
-.KeyBACKSPACE {
+.Backspace {
     background-color: #a3a3a3;
     width: 130px;
 }
 
-.KeyTAB {
+.Tab {
     background-color: #a3a3a3;
     width: 70px;
 }
 
-.KeyDEL {
+.Delete {
     background-color: #a3a3a3;
     width: 60px;
 }
 
-.KeyCAPSLOCK {
+.CapsLock {
     background-color: #a3a3a3;
     width: 130px;
 }
 
-.KeyENTER {
+.Enter {
     background-color: #a3a3a3;
     width: 110px;
 }
 
-.KeySHIFT_L {
+.ShiftLeft {
     background-color: #a3a3a3;
     width: 130px;
 }
 
-.KeySHIFT_R {
+.ShiftRight {
     background-color: #a3a3a3;
     width: 110px;
 }
 
-.KeyCTRL, .KeyALT, .KeyWIN {
+.ControlLeft, .ControlRight, .AltLeft, .AltRight, .Win {
     background-color: #a3a3a3;
 }
 
-.Key {  /*ПРОБЕЛ*/
+.Space {  /*ПРОБЕЛ*/
     width: 436px;
 }
 
@@ -138,4 +140,5 @@
 
 .active {
     background-color:rgb(136, 144, 255);
+    box-shadow: -1px -2px 3px -1px rgba(0, 0, 0, 1);
 }
