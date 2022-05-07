@@ -76,26 +76,36 @@ function keyBoard() {
 
     };
 
-    function print() {                                                      //отображение символов при нажатии на кнопки ВиртКлавы
+    function printBtn() {                                                      //отображение символов при нажатии на кнопки ВиртКлавы
         let textArea = document.querySelector('.textarea');
         let keyBtn = document.querySelectorAll('.keyboard__row_key');
 
         for (let k of keyBtn) {
-            if (!k.classList.contains('Backspace') && !k.classList.contains('Tab') && !k.classList.contains('Delete') && !k.classList.contains('CapsLock') && +
+            if (!k.classList.contains('Delete') && !k.classList.contains('CapsLock') && +
             !k.classList.contains('Enter') && !k.classList.contains('ShiftLeft') && !k.classList.contains('ShiftRight')&& !k.classList.contains('ControlLeft') && +
             !k.classList.contains('ControlRight') && !k.classList.contains('Win') && !k.classList.contains('AltLeft') && !k.classList.contains('AltRight') && + 
             !k.classList.contains('ArrowUp') && !k.classList.contains('ArrowLeft') && !k.classList.contains('ArrowDown') && !k.classList.contains('ArrowRight')) {
                 k.onclick = () => {
                     textArea.textContent += k.textContent;
-                    if (k.classList.contains('Space')) { 
-                        textArea.textContent += ' '; 
+                    switch (true) {
+                        case (k.classList.contains('Space')):
+                            textArea.textContent += ' '; 
+                        break;
+                        
+                        case (k.classList.contains('Backspace')):
+                            textArea.textContent = textArea.textContent.slice(0, -10);
+                        break;
+
+                        case (k.classList.contains('Tab')):
+                            textArea.textContent = textArea.textContent.slice(0, -3) + '    ';
+                        break;
                     };
                 };
             };
         };
     };
 
-    print();
+    printBtn();
 
     function KBPress() {                                                    //отображение символов при нажатии на кнопки ФизКлавы
 
