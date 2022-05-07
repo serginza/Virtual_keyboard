@@ -1,14 +1,22 @@
 function keyBoard() {
 
+    /*function focus() {
+        const textAreaFocus = document.querySelector(".textarea");
+        setTimeout(() => textAreaFocus.focus(), 0);
+    };*/
+
     const arrEnKeysRow1 = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'BackSpace'];  
     const arrEnKeysRow2 = ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', "\\", 'Del'];
     const arrEnKeysRow3 = ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter'];
     const arrEnKeysRow4 = ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ᐃ', 'Shift'];
     const arrKeysRow5 = ['Ctrl', 'Win', 'Alt', ``, 'Alt', 'ᐊ', 'ᐁ', 'ᐅ', 'Ctrl'];
-    const arrEnSpecKeys = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'BackSpace'];
+    const arrEnSpecKeys1 = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'BackSpace'];
+    const arrEnSpecKeys2 = ['{', '}', '|'];
+    const arrEnSpecKeys3 = [':', '"'];
+    const arrEnSpecKeys4 = ['<', '>', '?'];
 
     const arrRuKeysRow1 = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'BackSpace'];
-    const arrRuKeysRow2 = ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', "/", 'Del'];
+    const arrRuKeysRow2 = ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', "\\", 'Del'];
     const arrRuKeysRow3 = ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', "э", 'Enter'];
     const arrRuKeysRow4 = ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'ᐃ', 'Shift'];
     const arrRuSpecKeys = ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'BackSpace'];
@@ -20,7 +28,7 @@ function keyBoard() {
     const arrCodeKeysRow5 = ['ControlLeft', 'Win', 'AltLeft', `Space`, 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'];
     //const arrEnSpecKeys = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'BackSpace'];  
 
-    function createElm(el, tag, classTag, inner) {                          //Создание Тегов
+    function createElm(el, tag, classTag, inner) {                          //Создание Тегов и отрисовка клавиатуры
         el = document.createElement(tag);
         el.className = classTag;
         document.body.append(el);
@@ -79,10 +87,11 @@ function keyBoard() {
     function printBtn() {                                                      //отображение символов при нажатии на кнопки ВиртКлавы
         let textArea = document.querySelector('.textarea');
         let keyBtn = document.querySelectorAll('.keyboard__row_key');
+        let ka = Array.from(keyBtn);
 
         for (let k of keyBtn) {
-            if (!k.classList.contains('Delete') && !k.classList.contains('CapsLock') && +
-            !k.classList.contains('Enter') && !k.classList.contains('ShiftLeft') && !k.classList.contains('ShiftRight')&& !k.classList.contains('ControlLeft') && +
+            if (!k.classList.contains('Delete') && +
+            !k.classList.contains('Enter') && !k.classList.contains('ControlLeft') && +
             !k.classList.contains('ControlRight') && !k.classList.contains('Win') && !k.classList.contains('AltLeft') && !k.classList.contains('AltRight') && + 
             !k.classList.contains('ArrowUp') && !k.classList.contains('ArrowLeft') && !k.classList.contains('ArrowDown') && !k.classList.contains('ArrowRight')) {
                 k.onclick = () => {
@@ -99,8 +108,81 @@ function keyBoard() {
                         case (k.classList.contains('Tab')):
                             textArea.textContent = textArea.textContent.slice(0, -3) + '    ';
                         break;
+
+                        case (k.classList.contains('CapsLock')):
+                            k.classList.toggle('active');
+                            textArea.textContent = textArea.textContent.slice(0, -8);
+                        break;
+
+                        case (k.classList.contains('ShiftLeft')) || (k.classList.contains('ShiftRight')):
+                            k.classList.toggle('active');
+                            textArea.textContent = textArea.textContent.slice(0, -5);
+                        break;
                     };
                 };
+                
+                let caps = document.querySelector('.CapsLock');
+                let ShiftL = document.querySelector('.ShiftLeft');
+                let ShiftR = document.querySelector('.ShiftRight');
+
+                document.addEventListener('click', () => {
+                    if ((caps.classList.contains('active')) || (ShiftL.classList.contains('active')) || (ShiftR.classList.contains('active'))) {
+                        k.textContent = k.textContent.toUpperCase();
+                    } else {
+                        k.textContent = k.textContent.toLowerCase();
+                    };
+
+                    if ((ShiftL.classList.contains('active')) || (ShiftR.classList.contains('active'))) {
+                        for (let j = 0; j < arrEnSpecKeys1.length - 1; j++) {
+                            if (k.classList.contains(arrCodeKeysRow1[j])) {
+                                k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys1[j];
+                            };
+                        };
+
+                        for (let j = 11; j < arrCodeKeysRow2.length - 1; j++) {
+                            if (k.classList.contains(arrCodeKeysRow2[j])) {
+                                k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys2[j - 11];
+                            };
+                        };
+
+                        for (let j = 10; j < arrCodeKeysRow3.length - 1; j++) {
+                            if (k.classList.contains(arrCodeKeysRow3[j])) {
+                                k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys3[j - 10];
+                            };
+                        };
+
+                        for (let j = 8; j < arrCodeKeysRow4.length - 1; j++) {
+                            if (k.classList.contains(arrCodeKeysRow4[j])) {
+                                k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys4[j - 8];
+                            };
+                        };
+
+                    } else {
+                        for (let j = 0; j < arrEnKeysRow1.length - 1; j++) {
+                            if (k.classList.contains(arrCodeKeysRow1[j])) {
+                                k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow1[j];
+                            };
+                        };
+
+                        for (let j = 11; j < arrCodeKeysRow2.length - 1; j++) {
+                            if (k.classList.contains(arrCodeKeysRow2[j])) {
+                                k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow2[j];
+                            };
+                        };
+
+                        for (let j = 10; j < arrCodeKeysRow3.length - 1; j++) {
+                            if (k.classList.contains(arrCodeKeysRow3[j])) {
+                                k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow3[j];
+                            };
+                        };
+
+                        for (let j = 8; j < arrCodeKeysRow4.length - 1; j++) {
+                            if (k.classList.contains(arrCodeKeysRow4[j])) {
+                                k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow4[j];
+                            };
+                        };
+                    };
+                });
             };
         };
     };
@@ -136,61 +218,3 @@ function keyBoard() {
 };
 
 keyBoard();
-
-
-
-
-   /* //addClassSpecKeys('.Key`', 'Backquote');
-    addClassSpecKeys(".Key1", 'Digit1');
-    addClassSpecKeys(".Key2", 'Digit2');
-    addClassSpecKeys(".Key3", 'Digit3');
-    addClassSpecKeys(".Key4", 'Digit4');
-    addClassSpecKeys(".Key5", 'Digit5');
-    addClassSpecKeys(".Key6", 'Digit6');
-    addClassSpecKeys(".Key7", 'Digit7');
-    addClassSpecKeys(".Key8", 'Digit8');
-    addClassSpecKeys(".Key9", 'Digit9');
-    addClassSpecKeys(".Key0", 'Digit0');
-    addClassSpecKeys(".Key-", 'Minus');
-    //addClassSpecKeys('.Key=', 'Equal');
-    //addClassSpecKeys(".Key[", 'BracketLeft');
-    //addClassSpecKeys(".Key]", 'BracketRight');
-    //addClassSpecKeys(".Key\\", 'Backslash');
-    //addClassSpecKeys(".Key;", 'Semicolon');
-    //addClassSpecKeys(".Key'", 'Quote');*/
-
-                    /*for (let j = 0; j < arrEnKeysRow4.length; j++) {
-                    let keyCreateElm = document.createElement('div');
-                    keyCreateElm.className = 'keyboard__row_key';
-                    keyCreateElm.classList.add(`${'Key' + arrEnKeysRow4[j].toUpperCase()}`);
-                    keyCreateElm.innerHTML = arrEnKeysRow4[j];
-                    keyRow.append(keyCreateElm);
-
-                    switch (j) {
-                        case 0:
-                            keyCreateElm.classList.add('KeySHIFT_L');
-                            break;
-
-                        case 8:
-                            keyCreateElm.classList.add('Comma');
-                            break;
-
-                        case 9:
-                            keyCreateElm.classList.add('Period');
-                            break;
-
-                        case 10:
-                            keyCreateElm.classList.add('Slash');
-                            break;
-
-                        case 12:
-                            keyCreateElm.classList.add('KeySHIFT_R');
-                        break;
-                    }
-                }*/
-
-
-                    /*function addClassSpecKeys(oldClass, codeClass) {                        //присвоение классов с кодом кнопки для "особых" кнопок
-        let specKey = document.querySelector(oldClass);
-        specKey.classList.add(codeClass);
-    }*/
