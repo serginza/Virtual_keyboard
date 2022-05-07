@@ -85,106 +85,111 @@ function keyBoard() {
     };
 
     function printBtn() {                                                      //отображение символов при нажатии на кнопки ВиртКлавы
-        let textArea = document.querySelector('.textarea');
-        let keyBtn = document.querySelectorAll('.keyboard__row_key');
-        let ka = Array.from(keyBtn);
+        addEventListener('click', () =>{
+            let textArea = document.querySelector('.textarea');
+            let keyBtn = document.querySelectorAll('.keyboard__row_key');
+            let ka = Array.from(keyBtn);
 
-        for (let k of keyBtn) {
-            if (!k.classList.contains('Delete') && +
-            !k.classList.contains('Enter') && !k.classList.contains('ControlLeft') && +
-            !k.classList.contains('ControlRight') && !k.classList.contains('Win') && !k.classList.contains('AltLeft') && !k.classList.contains('AltRight') && + 
-            !k.classList.contains('ArrowUp') && !k.classList.contains('ArrowLeft') && !k.classList.contains('ArrowDown') && !k.classList.contains('ArrowRight')) {
-                k.onclick = () => {
-                    textArea.textContent += k.textContent;
-                    switch (true) {
-                        case (k.classList.contains('Space')):
-                            textArea.textContent += ' '; 
-                        break;
-                        
-                        case (k.classList.contains('Backspace')):
-                            textArea.textContent = textArea.textContent.slice(0, -10);
-                        break;
+            for (let k of keyBtn) {
+                if (!k.classList.contains('Delete') && !k.classList.contains('ControlLeft') && +
+                !k.classList.contains('ControlRight') && !k.classList.contains('Win') && !k.classList.contains('AltLeft') && !k.classList.contains('AltRight') && + 
+                !k.classList.contains('ArrowUp') && !k.classList.contains('ArrowLeft') && !k.classList.contains('ArrowDown') && !k.classList.contains('ArrowRight')) {
+                    k.onclick = () => {
+                        textArea.textContent += k.textContent;
+                        switch (true) {
+                            case (k.classList.contains('Space')):
+                                textArea.textContent += ' '; 
+                            break;
 
-                        case (k.classList.contains('Tab')):
-                            textArea.textContent = textArea.textContent.slice(0, -3) + '    ';
-                        break;
+                            case (k.classList.contains('Enter')):
+                                textArea.textContent = textArea.textContent.slice(0, -5) + '\n' 
+                            break;
+                            
+                            case (k.classList.contains('Backspace')):
+                                textArea.textContent = textArea.textContent.slice(0, -10);
+                            break;
 
-                        case (k.classList.contains('CapsLock')):
-                            k.classList.toggle('active');
-                            textArea.textContent = textArea.textContent.slice(0, -8);
-                        break;
+                            case (k.classList.contains('Tab')):
+                                textArea.textContent = textArea.textContent.slice(0, -3) + '     ';
+                            break;
 
-                        case (k.classList.contains('ShiftLeft')) || (k.classList.contains('ShiftRight')):
-                            k.classList.toggle('active');
-                            textArea.textContent = textArea.textContent.slice(0, -5);
-                        break;
+                            case (k.classList.contains('CapsLock')):
+                                k.classList.toggle('active');
+                                textArea.textContent = textArea.textContent.slice(0, -8);
+                            break;
+
+                            case (k.classList.contains('ShiftLeft')) || (k.classList.contains('ShiftRight')):
+                                k.classList.toggle('active');
+                                textArea.textContent = textArea.textContent.slice(0, -5);
+                            break;
+                        };
                     };
+                    
+                    let caps = document.querySelector('.CapsLock');
+                    let ShiftL = document.querySelector('.ShiftLeft');
+                    let ShiftR = document.querySelector('.ShiftRight');
+
+                    document.addEventListener('click', () => {
+                        if ((caps.classList.contains('active')) || (ShiftL.classList.contains('active')) || (ShiftR.classList.contains('active'))) {
+                            k.textContent = k.textContent.toUpperCase();
+                        } else {
+                            k.textContent = k.textContent.toLowerCase();
+                        };
+
+                        if ((ShiftL.classList.contains('active')) || (ShiftR.classList.contains('active'))) {
+                            for (let j = 0; j < arrEnSpecKeys1.length - 1; j++) {
+                                if (k.classList.contains(arrCodeKeysRow1[j])) {
+                                    k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys1[j];
+                                };
+                            };
+
+                            for (let j = 11; j < arrCodeKeysRow2.length - 1; j++) {
+                                if (k.classList.contains(arrCodeKeysRow2[j])) {
+                                    k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys2[j - 11];
+                                };
+                            };
+
+                            for (let j = 10; j < arrCodeKeysRow3.length - 1; j++) {
+                                if (k.classList.contains(arrCodeKeysRow3[j])) {
+                                    k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys3[j - 10];
+                                };
+                            };
+
+                            for (let j = 8; j < arrCodeKeysRow4.length - 1; j++) {
+                                if (k.classList.contains(arrCodeKeysRow4[j])) {
+                                    k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys4[j - 8];
+                                };
+                            };
+
+                        } else {
+                            for (let j = 0; j < arrEnKeysRow1.length - 1; j++) {
+                                if (k.classList.contains(arrCodeKeysRow1[j])) {
+                                    k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow1[j];
+                                };
+                            };
+
+                            for (let j = 11; j < arrCodeKeysRow2.length - 1; j++) {
+                                if (k.classList.contains(arrCodeKeysRow2[j])) {
+                                    k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow2[j];
+                                };
+                            };
+
+                            for (let j = 10; j < arrCodeKeysRow3.length - 1; j++) {
+                                if (k.classList.contains(arrCodeKeysRow3[j])) {
+                                    k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow3[j];
+                                };
+                            };
+
+                            for (let j = 8; j < arrCodeKeysRow4.length - 1; j++) {
+                                if (k.classList.contains(arrCodeKeysRow4[j])) {
+                                    k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow4[j];
+                                };
+                            };
+                        };
+                    });
                 };
-                
-                let caps = document.querySelector('.CapsLock');
-                let ShiftL = document.querySelector('.ShiftLeft');
-                let ShiftR = document.querySelector('.ShiftRight');
-
-                document.addEventListener('click', () => {
-                    if ((caps.classList.contains('active')) || (ShiftL.classList.contains('active')) || (ShiftR.classList.contains('active'))) {
-                        k.textContent = k.textContent.toUpperCase();
-                    } else {
-                        k.textContent = k.textContent.toLowerCase();
-                    };
-
-                    if ((ShiftL.classList.contains('active')) || (ShiftR.classList.contains('active'))) {
-                        for (let j = 0; j < arrEnSpecKeys1.length - 1; j++) {
-                            if (k.classList.contains(arrCodeKeysRow1[j])) {
-                                k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys1[j];
-                            };
-                        };
-
-                        for (let j = 11; j < arrCodeKeysRow2.length - 1; j++) {
-                            if (k.classList.contains(arrCodeKeysRow2[j])) {
-                                k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys2[j - 11];
-                            };
-                        };
-
-                        for (let j = 10; j < arrCodeKeysRow3.length - 1; j++) {
-                            if (k.classList.contains(arrCodeKeysRow3[j])) {
-                                k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys3[j - 10];
-                            };
-                        };
-
-                        for (let j = 8; j < arrCodeKeysRow4.length - 1; j++) {
-                            if (k.classList.contains(arrCodeKeysRow4[j])) {
-                                k.textContent = k.textContent.slice(0, -1) + arrEnSpecKeys4[j - 8];
-                            };
-                        };
-
-                    } else {
-                        for (let j = 0; j < arrEnKeysRow1.length - 1; j++) {
-                            if (k.classList.contains(arrCodeKeysRow1[j])) {
-                                k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow1[j];
-                            };
-                        };
-
-                        for (let j = 11; j < arrCodeKeysRow2.length - 1; j++) {
-                            if (k.classList.contains(arrCodeKeysRow2[j])) {
-                                k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow2[j];
-                            };
-                        };
-
-                        for (let j = 10; j < arrCodeKeysRow3.length - 1; j++) {
-                            if (k.classList.contains(arrCodeKeysRow3[j])) {
-                                k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow3[j];
-                            };
-                        };
-
-                        for (let j = 8; j < arrCodeKeysRow4.length - 1; j++) {
-                            if (k.classList.contains(arrCodeKeysRow4[j])) {
-                                k.textContent = k.textContent.slice(0, -1) + arrEnKeysRow4[j];
-                            };
-                        };
-                    };
-                });
             };
-        };
+        });
     };
 
     printBtn();
@@ -204,12 +209,12 @@ function keyBoard() {
         });
 
         document.addEventListener('keyup', (event) => {
-            arrKeys.find(it => {
+            //arrKeys.find(it => {
                 const key = arrKeys.find(it =>
                     it.classList.contains(event.code))
                 key.classList.remove('active');
             });
-        });
+        //});
     };
 
     KBPress();
