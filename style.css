@@ -6,11 +6,15 @@
     font-style: normal;
 }
 
+body {
+    background: linear-gradient(90deg, rgba(234,234,255,1) 0%, rgba(234,234,255,1) 0%, rgba(255,255,255,1) 20%, rgba(252,252,255,1) 81%, rgba(234,234,255,1) 100%);
+}
+
 .header {
     margin: 10px 0;
     text-align: center;
     height: 45px;
-    font-family: 'Rany';
+    font-family: 'Comic Sans MS';
     font-style: normal;
     font-weight: 800;
     font-size: 35px;
@@ -26,7 +30,7 @@
     transform: translate(-50%, 0%);
     width: 940px;
     height: 220px;
-    font-family: 'Rany';
+    font-family: 'Comic Sans MS';
     font-style: normal;
     font-weight: 400;
     letter-spacing: 0.05em;
@@ -35,19 +39,22 @@
 .keyboard {
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 75%);
+    top: 300px;
+    transform: translate(-50%, 0%);
     width: auto;
     height: auto;
-    //outline: 1px solid #ff11df;
     border-radius: 10px;
-    background-color:#eeeeee;
+    background-color: #eceaff;
+    box-shadow: -1px -1px 5px -1px rgba(0, 0, 0, 1) inset;
+    font-family: 'Comic Sans MS';
+    font-style: normal;
+    font-weight: 600;
 }
 
 .keyboard__row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    //outline: 1px solid #ff11df;
     margin: 10px 5px;
 }
 
@@ -61,7 +68,7 @@
     /*outline: 1px solid #ff11df;*/
     border-radius: 5px;
     background-color: #d3d3d3;
-    font-family: 'Rany';
+    font-family: 'Comic Sans MS';
     font-style: normal;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -130,7 +137,7 @@
 .description {
     margin-top: 575px;
     text-align: center;
-    font-family: 'Rany';
+    font-family: 'Comic Sans MS';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
